@@ -1,0 +1,35 @@
+" set up termdebug
+set mouse=a
+packadd termdebug
+nmap <Leader>db :Termdebug<CR><C-w>L
+
+" fix Termdebug and vim-tmux-navigator
+" see christoomey/vim-tmux-navigator/issues/239
+if exists(':tnoremap')
+ tnoremap <silent> <c-h> <c-w>:TmuxNavigateLeft<cr>
+ tnoremap <silent> <c-j> <c-w>:TmuxNavigateDown<cr>
+ tnoremap <silent> <c-k> <c-w>:TmuxNavigateUp<cr>
+ tnoremap <silent> <c-l> <c-w>:TmuxNavigateRight<cr>
+ tnoremap <silent> <c-\> <c-w>:TmuxNavigatePrevious<cr>
+endif
+
+" toggle normal mode without leaving home row
+imap ii <Esc>
+
+" relative numbers
+set number relativenumber
+if has("autocmd")
+    filetype indent plugin on
+    augroup numbertoggle
+        autocmd!
+        autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+        autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+    augroup END
+endif
+
+" open markdown files with Chrome
+autocmd BufEnter *.md exe 'noremap <F5> :! /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome %:p<CR>'
+
+" arduino mappings
+nmap <Leader>au :make upload<CR>
+nmap <Leader>am :VtrSendCommandToRunner!<CR>make monitor<CR>

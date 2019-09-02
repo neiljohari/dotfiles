@@ -1,0 +1,4 @@
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'itchyny/lightline.vim'
+Plug 'edkolev/tmuxline.vim'
+Plug 'christoomey/vim-tmux-runner'

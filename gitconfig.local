@@ -1,0 +1,26 @@
+[user]
+    name = Neil Johari
+    email = neil@johari.tech 
+    signingKey = C6CA0540F2ADFA4A7C0A2F4A4087615AB84D394E
+[commit]
+    gpgsign = true
+[alias]
+    l = log --pretty=colored
+    cm = !"git add . && git commit -am" 
+    co = checkout
+    cob = checkout -b
+    df = diff --color --color-words --abbrev
+    s = status
+
+    # Show the diff between the latest commit and the current state
+    d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+    ctags = !.git/hooks/ctags
+    sla = log --oneline --decorate --graph --all
+    glog = log -E -i --grep
+    car = commit --amend --no-edit
+    unstage = reset
+    uncommit = reset --soft HEAD^
+[pretty]
+    colored = format:%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset
+[core]
+    excludesfile = /Users/neiljohari/.gitignore_global

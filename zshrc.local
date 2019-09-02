@@ -1,0 +1,38 @@
+export GPG_TTY=$(tty)
+
+source ~/dotfiles-local/antigen.zsh
+antigen use oh-my-zsh
+antigen bundle git
+antigen bundle command-not-found
+antigen bundle tmux
+
+# Syntax highlighting bundle.
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# Load the theme.
+antigen theme denysdovhan/spaceship-prompt
+
+# Tell Antigen that you're done.
+antigen apply
+
+# Let's live in tmux
+_not_inside_tmux() { [[ -z "$TMUX" ]] }
+
+ensure_tmux_is_running() {
+    if _not_inside_tmux; then
+        tat
+    fi
+}
+
+ensure_tmux_is_running
+
+# fzf functions
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# homebrew python no longer shadows the system copy of python
+# this effectively sets the `python` command to the homebrew version
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+# set up arduino-mk paths
+export ARDUINO_DIR=/Applications/Arduino.app/Contents/Java
+export ARDMK_DIR=/usr/local/opt/arduino-mk
