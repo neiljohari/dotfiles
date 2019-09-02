@@ -1,3 +1,5 @@
+set nocompatible
+
 " set up termdebug
 set mouse=a
 packadd termdebug
@@ -33,3 +35,23 @@ autocmd BufEnter *.md exe 'noremap <F5> :! /Applications/Google\ Chrome.app/Cont
 " arduino mappings
 nmap <Leader>au :make upload<CR>
 nmap <Leader>am :VtrSendCommandToRunner!<CR>make monitor<CR>
+
+" vimtex settings
+" see https://castel.dev/post/lecture-notes-1/
+let g:tex_flavor='latex'
+let g:vimtex_view_method='skim'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+" configure utilsnips for LaTeX
+let g:UltiSnipsSnippetsDir = '~/.vim/UltiSnips'
+let g:UltiSnipsSnippetDirectories=["UltiSnips"]
+
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+let g:UltiSnipsEditSplit='vertical'
+
+
+
