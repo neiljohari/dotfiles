@@ -55,3 +55,7 @@ let g:UltiSnipsEditSplit='vertical'
 
 
 
+
+" allow project specific vimrc files (with secure mode enabled)
+set exrc
+set secure
