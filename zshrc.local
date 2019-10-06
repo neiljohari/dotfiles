@@ -36,3 +36,7 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 # set up arduino-mk paths
 export ARDUINO_DIR=/Applications/Arduino.app/Contents/Java
 export ARDMK_DIR=/usr/local/opt/arduino-mk
+
+# let's use homebrew g++ instead of Apple LLVM/clang
+alias g++="g++-9"
+alias gcc="gcc-9"
