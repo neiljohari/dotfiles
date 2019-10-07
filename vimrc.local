@@ -3,11 +3,15 @@ set nocompatible
 " set up termdebug
 set mouse=a
 packadd termdebug
-" nmap <Leader>db :Termdebug<CR><C-w>L
+
+nmap <Leader>db :Termdebug<CR><C-w>L
+
+" The following is an outdated binding. The new way I have resolved the issue is
+" using gdb --HEAD from Homebrew
 
 " calls Termdebug and kills gdb, then calls Termdebug again. There was some
 " weird bug with gdb silently starting a process that this addresses
-nnoremap <Leader>db :Termdebug<CR><C-w><C-p>:!kill -9 $(ps aux <bar> grep "gdb" <bar> awk '{print $2}' <bar> tail -1)<CR><CR>:call timer_start(1, {tid -> execute('Termdebug')})<CR><C-w><C-p>quit<CR>
+" nnoremap <Leader>db :Termdebug<CR><C-w><C-p>:!kill -9 $(ps aux <bar> grep "gdb" <bar> awk '{print $2}' <bar> tail -1)<CR><CR>:call timer_start(1, {tid -> execute('Termdebug')})<CR><C-w><C-p>quit<CR>
 
 " fix Termdebug and vim-tmux-navigator
 " see christoomey/vim-tmux-navigator/issues/239
