@@ -40,3 +40,7 @@ export ARDMK_DIR=/usr/local/opt/arduino-mk
 # let's use homebrew g++ instead of Apple LLVM/clang
 alias g++="g++-9"
 alias gcc="gcc-9"
+
+# paths for pipx
+export PATH="/Users/neiljohari/.local/bin:$PATH"
+export PATH="/Users/neiljohari/Library/Python/3.7/bin:$PATH"
