@@ -46,6 +46,16 @@ autocmd BufEnter *.md exe 'noremap <F5> :! /Applications/Google\ Chrome.app/Cont
 nmap <Leader>au :make upload<CR>
 nmap <Leader>am :VtrSendCommandToRunner!<CR>make monitor<CR>
 
+let g:rails_projections = {
+  \    "app/javascript/*.js": {
+  \      "command": "pack"
+  \    },
+  \    "app/javascript/*.scss": {
+  \      "command": "pack"
+  \    }     
+  \ }
+
+
 " vimtex settings
 " see https://castel.dev/post/lecture-notes-1/
 let g:tex_flavor='latex'
@@ -62,8 +72,6 @@ let g:UltiSnipsExpandTrigger = '<c-tab>'
 let g:UltiSnipsJumpForwardTrigger = '<c-tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-s-tab>'
 let g:UltiSnipsEditSplit='vertical'
-
-
 
 
 " allow project specific vimrc files (with secure mode enabled)
