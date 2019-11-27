@@ -5,6 +5,8 @@ set mouse=a
 packadd termdebug
 
 nmap <Leader>db :Termdebug<CR><C-w>L
+nmap <Leader>edb :!kill -9 $(ps aux <bar> grep "gdb" <bar> tail -1 <bar> awk '{print $2}') <cr>
+
 
 " The following is an outdated binding. The new way I have resolved the issue is
 " using gdb --HEAD from Homebrew
