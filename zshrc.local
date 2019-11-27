@@ -45,3 +45,9 @@ export PATH="/usr/local/opt/llvm/bin:$PATH"
 # paths for pipx
 export PATH="/Users/neiljohari/.local/bin:$PATH"
 export PATH="/Users/neiljohari/Library/Python/3.7/bin:$PATH"
+
+# path for postgres bins
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
