@@ -64,16 +64,6 @@ let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
 
-" configure utilsnips for LaTeX
-let g:UltiSnipsSnippetsDir = '~/.vim/UltiSnips'
-let g:UltiSnipsSnippetDirectories=["UltiSnips"]
- 
-let g:UltiSnipsExpandTrigger = '<c-tab>'
-let g:UltiSnipsJumpForwardTrigger = '<c-tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<c-s-tab>'
-let g:UltiSnipsEditSplit='vertical'
-
-
 " allow project specific vimrc files (with secure mode enabled)
 set exrc
 set secure
