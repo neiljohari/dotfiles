@@ -37,11 +37,6 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export ARDUINO_DIR=/Applications/Arduino.app/Contents/Java
 export ARDMK_DIR=/usr/local/opt/arduino-mk
 
-# let's use homebrew g++ instead of Apple LLVM/clang
-alias g++="g++-9"
-alias gcc="gcc-9"
-export PATH="/usr/local/opt/llvm/bin:$PATH"
-
 # paths for pipx
 export PATH="/Users/neiljohari/.local/bin:$PATH"
 export PATH="/Users/neiljohari/Library/Python/3.7/bin:$PATH"
@@ -51,3 +46,5 @@ export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+typeset -g ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE='20'
