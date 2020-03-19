@@ -78,6 +78,7 @@ let g:vimtex_compiler_latexmk = {
 set exrc
 set secure
 
+" set ALE to use ccls server (provide proper include paths)
 let g:ale_cpp_ccls_init_options = {
       \   'clang': {
       \       'extraArgs': [
