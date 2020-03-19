@@ -4,3 +4,4 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'christoomey/vim-tmux-runner'
 Plug 'lervag/vimtex'
 Plug 'airblade/vim-rooter'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}

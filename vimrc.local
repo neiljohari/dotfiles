@@ -77,3 +77,18 @@ let g:vimtex_compiler_latexmk = {
 " allow project specific vimrc files (with secure mode enabled)
 set exrc
 set secure
+
+let g:ale_cpp_ccls_init_options = {
+      \   'clang': {
+      \       'extraArgs': [
+      \         '-isystem/usr/local/include',
+      \         '-isystem/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1',
+      \         '-isystem/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include',
+      \         '-isystem/Library/Developer/CommandLineTools/usr/include',
+      \         '-isystem/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include',
+      \         '-isystem/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks' 
+      \             ],
+      \       'resourceDir': '/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0'
+      \   }
+      \ }
+
