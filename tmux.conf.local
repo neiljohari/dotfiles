@@ -1,5 +1,9 @@
 source-file ~/dotfiles-local/tmuxline-generated.conf
 
+# Terminal type configuration
+set -g default-terminal "screen-256color"
+set -ga terminal-overrides ",xterm-256color:Tc"
+
 # Shortcut to reload this config
 bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
 
