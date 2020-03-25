@@ -232,3 +232,5 @@ let g:lightline = {
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " END coc.nvim config
+
+set redrawtime=10000
