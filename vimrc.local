@@ -88,7 +88,7 @@ set exrc
 set secure
 
 " set ALE to use ccls server (provide proper include paths)
-let g:ale_cpp_ccls_init_options = {
+let ccls_init_options = {
       \   'clang': {
       \       'extraArgs': [
       \         '-isystem/usr/local/include',
@@ -101,6 +101,10 @@ let g:ale_cpp_ccls_init_options = {
       \       'resourceDir': '/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0'
       \   }
       \ }
+
+
+let g:ale_cpp_ccls_init_options = ccls_init_options
+let g:ale_c_ccls_init_options = ccls_init_options
 
 " BEGIN coc.nvim config
 " TextEdit might fail if hidden is not set.
