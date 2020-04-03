@@ -37,6 +37,9 @@ if exists(':tnoremap')
  tnoremap <silent> <c-\> <c-w>:TmuxNavigatePrevious<cr>
 endif
 
+" don't make a newline a comment by default
+autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
+
 " toggle normal mode without leaving home row
 imap ii <Esc>
 
