@@ -57,6 +57,27 @@ endif
 " open markdown files with Chrome
 autocmd BufEnter *.md exe 'noremap <F5> :! /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome %:p<CR>'
 
+" open current selection in carbon.now.sh
+let g:carbon_now_sh_options = 
+\ { 'bg' : 'rgba(171, 184, 195, 1)',
+  \ 't' : 'lucario',
+  \ 'wt' : 'sharp',
+  \ 'ds' : 'false',
+  \ 'dsyoff' : '20px',
+  \ 'dsblur' : '68px',
+  \ 'wa' : 'true',
+  \ 'pv' : '0px',
+  \ 'ph' : '0px',
+  \ 'ln' : 'false',
+  \ 'fl' : '1',
+  \ 'fm' : 'Hack',
+  \ 'fs' : '14px',
+  \ 'lh' : '133%',
+  \ 'si' : 'false',
+  \ 'es' : '2x',
+  \ 'wm' : 'false' }
+vnoremap <F4> :CarbonNowSh<CR>
+
 " arduino mappings
 nmap <Leader>au :make upload<CR>
 nmap <Leader>am :VtrSendCommandToRunner!<CR>make monitor<CR>
