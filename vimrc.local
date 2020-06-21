@@ -27,6 +27,7 @@ nmap <Leader>edb :!kill -9 $(ps aux <bar> grep "gdb" <bar> tail -1 <bar> awk '{p
 " weird bug with gdb silently starting a process that this addresses
 " nnoremap <Leader>db :Termdebug<CR><C-w><C-p>:!kill -9 $(ps aux <bar> grep "gdb" <bar> awk '{print $2}' <bar> tail -1)<CR><CR>:call timer_start(1, {tid -> execute('Termdebug')})<CR><C-w><C-p>quit<CR>
 
+
 " fix Termdebug and vim-tmux-navigator
 " see christoomey/vim-tmux-navigator/issues/239
 if exists(':tnoremap')
@@ -92,6 +93,12 @@ let g:rails_projections = {
   \ }
 
 
+" Ultisnips config
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+
 " vimtex settings
 " see https://castel.dev/post/lecture-notes-1/
 let g:tex_flavor='latex'
@@ -123,7 +130,7 @@ let ccls_init_options = {
       \         '-isystem/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include',
       \         '-isystem/Library/Developer/CommandLineTools/usr/include',
       \         '-isystem/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include',
-      \         '-isystem/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks' 
+      \         '-isystem/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks',
       \             ],
       \       'resourceDir': '/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0'
       \   }
@@ -263,27 +270,5 @@ let g:lightline = {
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " END coc.nvim config
-
-" coc automatic diagnostic/documentation on cursor hover
-function! ShowDocIfNoDiagnostic(timer_id)
-  if (coc#util#has_float() == 0)
-    silent call CocActionAsync('doHover')
-  endif
-endfunction
-
-function! s:show_hover_doc()
-  call timer_start(500, 'ShowDocIfNoDiagnostic')
-endfunction
-
-autocmd CursorHoldI * :call <SID>show_hover_doc()
-autocmd CursorHold * :call <SID>show_hover_doc()
-
-" coc-prettifier and coc-eslint conditional installation
-if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
-  let g:coc_global_extensions += ['coc-prettier']
-endif
-if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
-  let g:coc_global_extensions += ['coc-eslint']
-endif
 
 set redrawtime=10000
