@@ -1,0 +1,48 @@
+{
+  "eslint.autoFixOnSave": true,
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "prettier.disableSuccessMessage": true,
+  "languageserver": {
+    "ccls": {
+      "command": "ccls",
+      "filetypes": [
+        "c",
+        "cpp",
+        "cuda",
+        "objc",
+        "objcpp"
+      ],
+      "rootPatterns": [
+        ".ccls-root",
+        "compile_commands.json"
+      ],
+      "initializationOptions": {
+        "cache": {
+          "directory": ".ccls-cache"
+        },
+        "client": {
+          "snippetSupport": true
+        },
+        "clang": {
+          "extraArgs": [
+            "-stdlib=libstdc++",
+            "-isystem/usr/local/include",
+            "-isystem/Library/Developer/CommandLineTools/usr/include/c++/v1",
+            "-isystem/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1",
+            "-isystem/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include",
+            "-isystem/Library/Developer/CommandLineTools/usr/include",
+            "-isystem/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include",
+            "-isystem/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks",
+            "-isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
+          ],
+          "resourceDir": "/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0"
+        }
+      }
+    }
+  }
+}
