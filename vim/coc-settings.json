@@ -6,21 +6,20 @@
     "typescript",
     "typescriptreact"
   ],
+  "eslint.autoFixOnSave": true,
+  "html.format.enable": true,
+  "tsserver.formatOnType": true,
+  "coc.preferences.formatOnType": true,
   "prettier.disableSuccessMessage": true,
+  "solargraph.diagnostics": true,
+  "solargraph.formatting": true,
+  "solargraph.autoformat": true,
+  "solargraph.useBundler": true,
   "languageserver": {
     "ccls": {
       "command": "ccls",
-      "filetypes": [
-        "c",
-        "cpp",
-        "cuda",
-        "objc",
-        "objcpp"
-      ],
-      "rootPatterns": [
-        ".ccls-root",
-        "compile_commands.json"
-      ],
+      "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
+      "rootPatterns": [".ccls-root", "compile_commands.json"],
       "initializationOptions": {
         "cache": {
           "directory": ".ccls-cache"
