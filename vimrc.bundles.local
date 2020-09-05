@@ -3,6 +3,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'itchyny/lightline.vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'christoomey/vim-tmux-runner'
+Plug 'thoughtbot/vim-rspec'
 Plug 'lervag/vimtex'
 Plug 'airblade/vim-rooter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
