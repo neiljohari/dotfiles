@@ -37,6 +37,9 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export ARDUINO_DIR=/Applications/Arduino.app/Contents/Java
 export ARDMK_DIR=/usr/local/opt/arduino-mk
 
+# shortcut to get back to root of a project
+alias grt='cd $(git root)'
+
 # paths for pipx
 export PATH="/Users/neiljohari/.local/bin:$PATH"
 export PATH="/Users/neiljohari/Library/Python/3.7/bin:$PATH"
