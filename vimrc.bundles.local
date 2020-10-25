@@ -9,7 +9,7 @@ Plug 'airblade/vim-rooter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-unimpaired'
-Plug 'neiljohari/vimspector', { 'branch': 'upgrade-cpptools' }
+Plug 'puremourning/vimspector'
 Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'digitaltoad/vim-pug'
 Plug 'jparise/vim-graphql'
