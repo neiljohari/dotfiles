@@ -129,24 +129,13 @@ let g:vimtex_compiler_latexmk = {
 set exrc
 set secure
 
-" set ALE to use ccls server (provide proper include paths)
-let ccls_init_options = {
-      \  "clang": {
-      \    "extraArgs": [
-      \      "-stdlib=libstdc++",
-      \      "-isystem/usr/local/include",
-      \      "-isystem/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1",
-      \      "-isystem/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include",
-      \      "-isystem/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include",
-      \      "-isysroot/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
-      \      "-isystem/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks"
-      \    ],
-      \    "resourceDir": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0"
-      \  }
-      \ }
-
-let g:ale_cpp_ccls_init_options = ccls_init_options
-let g:ale_c_ccls_init_options = ccls_init_options
+" BEGIN ALE config
+let g:ale_linters = {
+      \   'cpp': ['ccls'],
+      \}
+let g:ale_linters_explicit = 1
+let g:ale_disable_lsp = 1
+" END ALE config
 
 " BEGIN coc.nvim config
 " TextEdit might fail if hidden is not set.
