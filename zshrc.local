@@ -1,9 +1,9 @@
 export GPG_TTY=$(tty)
 
-source ~/dotfiles-local/antigen.zsh
-antigen use oh-my-zsh
-antigen bundle git
-antigen bundle command-not-found
+source ~/dotfiles-local/antigen.zsh 
+antigen use oh-my-zsh 
+antigen bundle git 
+antigen bundle command-not-found 
 antigen bundle tmux
 
 # Syntax highlighting bundle.
@@ -29,25 +29,30 @@ ensure_tmux_is_running
 # fzf functions
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# homebrew python no longer shadows the system copy of python
-# this effectively sets the `python` command to the homebrew version
+# homebrew python no longer shadows the system copy of python this 
+# effectively sets the `python` command to the homebrew version
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 # set up arduino-mk paths
-export ARDUINO_DIR=/Applications/Arduino.app/Contents/Java
+export ARDUINO_DIR=/Applications/Arduino.app/Contents/Java 
 export ARDMK_DIR=/usr/local/opt/arduino-mk
 
 # shortcut to get back to root of a project
 alias grt='cd $(git root)'
 
 # paths for pipx
-export PATH="/Users/neiljohari/.local/bin:$PATH"
+export PATH="/Users/neiljohari/.local/bin:$PATH" 
 export PATH="/Users/neiljohari/Library/Python/3.7/bin:$PATH"
 
 # path for postgres bins
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+# Add NVM to PATH
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 typeset -g ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE='20'
+
+# Add RVM to PATH; ensure it is last PATH variable change
+export PATH="$PATH:$HOME/.rvm/bin"
