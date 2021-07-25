@@ -3,13 +3,38 @@ export GPG_TTY=$(tty)
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 
-  autoload -Uz compinit
-  compinit
+  # SEE: https://gist.github.com/ctechols/ca1035271ad134841284
+  # On slow systems, checking the cached .zcompdump file to see if it must be 
+  # regenerated adds a noticable delay to zsh startup.  This little hack restricts 
+  # it to once a day.  It should be pasted into your own completion file.
+  #
+  # The globbing is a little complicated here:
+  # - '#q' is an explicit glob qualifier that makes globbing work within zsh's [[ ]] construct.
+  # - 'N' makes the glob pattern evaluate to nothing when it doesn't match (rather than throw a globbing error)
+  # - '.' matches "regular files"
+  # - 'mh+24' matches files (or directories or whatever) that are older than 24 hours.
+  autoload -Uz compinit 
+  if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+    compinit;
+    touch .zcompdump;
+    echo "HELLO"
+  else
+    compinit -C;
+  fi;
 fi
+
 source ~/dotfiles-local/antigen.zsh 
-antigen use oh-my-zsh 
-antigen bundle git 
-antigen bundle command-not-found 
+
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+# Speedup shell startup time by lazy loading NVM (requires zsh-nvm plugin)
+export NVM_LAZY_LOAD=true
+export NVM_COMPLETION=true
+antigen bundle lukechilds/zsh-nvm
+
+antigen bundle git
+antigen bundle command-not-found
 antigen bundle tmux
 
 # Syntax highlighting bundle.
@@ -32,6 +57,12 @@ ensure_tmux_is_running() {
 
 ensure_tmux_is_running
 
+# Profiling utilities
+timezsh() {
+  shell=${1-$SHELL}
+  for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
+}
+
 # fzf functions
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -52,11 +83,6 @@ export PATH="/Users/neiljohari/Library/Python/3.7/bin:$PATH"
 
 # path for postgres bins
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
-
-# Add NVM to PATH
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 typeset -g ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE='20'
 
