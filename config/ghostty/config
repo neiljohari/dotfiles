@@ -4,8 +4,9 @@
 font-family = "FiraCode Nerd Font Mono"
 font-size = 14
 
-# Colors — gruvbox dark hard to match starship + vim
+# Colors — gruvbox dark hard to match starship + vim, forced black bg
 theme = "Gruvbox Dark Hard"
+background = 000000
 
 # Shell
 shell-integration = zsh
