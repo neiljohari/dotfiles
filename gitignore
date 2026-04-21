@@ -1,4 +1,5 @@
 .ccls-cache
+.worktrees/
 *.swp
 !tags/
 *.pyc

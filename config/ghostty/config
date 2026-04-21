@@ -1,0 +1,32 @@
+# Ghostty config — see `ghostty +show-config --default --docs` for every option.
+
+# Font
+font-family = "FiraCode Nerd Font Mono"
+font-size = 14
+
+# Colors — gruvbox dark hard to match starship + vim
+theme = "Gruvbox Dark Hard"
+
+# Shell
+shell-integration = zsh
+shell-integration-features = cursor,sudo,title
+
+# macOS niceties
+macos-option-as-alt = true
+macos-titlebar-style = tabs
+window-padding-x = 6
+window-padding-y = 6
+
+# Cursor
+cursor-style = block
+cursor-style-blink = false
+
+# Mouse + clipboard
+copy-on-select = clipboard
+mouse-hide-while-typing = true
+
+# Scrollback
+scrollback-limit = 100000
+
+# Don't confirm quit for a single window
+confirm-close-surface = false

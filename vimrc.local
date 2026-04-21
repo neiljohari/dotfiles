@@ -1,3 +1,13 @@
+if &diff
+    set diffopt-=internal
+    set diffopt+=vertical
+endif
+
+" ALE was unplugged, clear base vimrc's dangling ale#Queue autocmds
+augroup ale
+  autocmd!
+augroup END
+
 " use gruvbox colorscheme
 set termguicolors
 
@@ -101,11 +111,6 @@ let g:rails_projections = {
   \ }
 
 
-" Ultisnips config
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
 
 " vimtex settings
 " see https://castel.dev/post/lecture-notes-1/
@@ -129,13 +134,6 @@ let g:vimtex_compiler_latexmk = {
 set exrc
 set secure
 
-" BEGIN ALE config
-let g:ale_linters = {
-      \   'cpp': ['ccls'],
-      \}
-let g:ale_linters_explicit = 1
-let g:ale_disable_lsp = 1
-" END ALE config
 
 " BEGIN coc.nvim config
 " TextEdit might fail if hidden is not set.
@@ -186,6 +184,10 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+let g:coc_filetype_map = {
+      \ 'nomad': 'json',
+      \ }
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)

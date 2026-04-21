@@ -1,5 +1,11 @@
-UnPlug 'w0rp/ale'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+UnPlug 'dense-analysis/ale'
+
+" Prefer ARM Homebrew fzf over the base's Intel path check
+if isdirectory("/opt/homebrew/opt/fzf")
+  UnPlug 'junegunn/fzf'
+  Plug '/opt/homebrew/opt/fzf'
+endif
+
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'itchyny/lightline.vim'
 Plug 'edkolev/tmuxline.vim'
@@ -14,6 +20,6 @@ Plug 'puremourning/vimspector'
 Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'digitaltoad/vim-pug'
 Plug 'jparise/vim-graphql'
-Plug 'SirVer/ultisnips'
 Plug 'kana/vim-textobj-user'
 Plug 'rhysd/vim-textobj-ruby'
+Plug 'jvirtanen/vim-hcl'

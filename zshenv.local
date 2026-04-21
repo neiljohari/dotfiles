@@ -1,0 +1,5 @@
+# Apple Silicon Homebrew must be on PATH for all shells (including non-interactive
+# SSH subprocesses and the Claude CLI), so exporting here (zshenv runs first).
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
+. "$HOME/.cargo/env"

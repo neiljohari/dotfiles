@@ -1,0 +1,8 @@
+alias ls='eza --group-directories-first'
+alias ll='eza -lh --group-directories-first --git'
+alias la='eza -lah --group-directories-first --git'
+alias tree='eza --tree --level=3'
+alias cat='bat --paging=never'
+alias top='btop'
+alias lg='lazygit'
+alias grt='cd $(git root)'

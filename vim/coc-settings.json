@@ -1,5 +1,22 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["ruby", "scss", "css", "markdown"],
+  "coc.preferences.formatOnSave": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "python",
+    "typescript",
+    "typescriptreact",
+    "javascript",
+    "javascriptreact",
+    "terraform",
+    "tf",
+    "json",
+    "jsonc",
+    "ruby",
+    "scss",
+    "css",
+    "markdown"
+  ],
+  "coc.preferences.formatOnType": true,
+
   "eslint.autoFixOnSave": true,
   "eslint.filetypes": [
     "javascript",
@@ -7,40 +24,24 @@
     "typescript",
     "typescriptreact"
   ],
-  "html.format.enable": true,
-  "tsserver.formatOnType": true,
-  "coc.preferences.formatOnType": true,
+
   "prettier.disableSuccessMessage": true,
+
+  "tsserver.formatOnType": true,
+
+  "python.formatting.provider": "ruff",
+  "python.linting.enabled": true,
+  "python.linting.ruffEnabled": true,
+  "pyright.inlayHints.variableTypes": true,
+  "pyright.inlayHints.functionReturnTypes": true,
+
+  "terraform.languageServer.enable": true,
+  "terraform.languageServer.pathToBinary": "/opt/homebrew/bin/terraform-ls",
+
   "solargraph.diagnostics": true,
   "solargraph.formatting": true,
   "solargraph.autoformat": true,
   "solargraph.useBundler": true,
-  "diagnostic.displayByAle": true,
-  "languageserver": {
-    "ccls": {
-      "command": "ccls",
-      "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
-      "rootPatterns": [".ccls-root", "compile_commands.json"],
-      "initializationOptions": {
-        "cache": {
-          "directory": ".ccls-cache"
-        },
-        "client": {
-          "snippetSupport": true
-        },
-        "clang": {
-          "extraArgs": [
-            "-stdlib=libstdc++",
-             "-isystem/usr/local/include",
-             "-isystem/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1",
-             "-isystem/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include",
-             "-isystem/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include",
-             "-isystem/Library/Developer/CommandLineTools/usr/include",
-             "-isystem/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
-          ],
-          "resourceDir": "/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0"
-        }
-      }
-    }
-  }
+
+  "html.format.enable": true
 }

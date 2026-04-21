@@ -1,6 +1,17 @@
 Host *
-  ControlMaster auto
-  ControlPath ~/.ssh/master-%r@%h:%p
   AddKeysToAgent yes
   UseKeychain yes
+  ControlMaster auto
+  ControlPath ~/.ssh/cm-%r@%h:%p
+  ControlPersist 10m
   IdentityFile ~/.ssh/id_ed25519
+  IdentityFile ~/.ssh/id_rsakuberjew
+  IdentityFile ~/.ssh/edamame_appserver
+  IdentityFile ~/.ssh/terraform_ansible_bootstrap
+  IdentitiesOnly yes
+  ServerAliveInterval 60
+  ServerAliveCountMax 3
+
+# Enable ForwardAgent only per-host for trusted bastions, e.g.:
+# Host trusted-bastion.example.com
+#   ForwardAgent yes

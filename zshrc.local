@@ -1,64 +1,67 @@
 export GPG_TTY=$(tty)
 
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+# --- Plugins (antidote) ---
+source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+antidote load ~/.zsh_plugins.txt
 
-  autoload -Uz compinit
-  compinit
-fi
-source ~/dotfiles-local/antigen.zsh 
-antigen use oh-my-zsh 
-antigen bundle git 
-antigen bundle command-not-found 
-antigen bundle tmux
+# --- Prompt ---
+eval "$(starship init zsh)"
 
-# Syntax highlighting bundle.
-antigen bundle zsh-users/zsh-syntax-highlighting
+# --- Version manager (mise replaces nvm/pyenv/rvm) ---
+eval "$(mise activate zsh)"
 
-# Load the theme.
-antigen theme denysdovhan/spaceship-prompt
-
-# Tell Antigen that you're done.
-antigen apply
-
-# Let's live in tmux
-_not_inside_tmux() { [[ -z "$TMUX" ]] }
-
-ensure_tmux_is_running() {
-    if _not_inside_tmux; then
-        tat
-    fi
+# --- Conda/mamba: lazy-load to avoid ~500ms shell startup cost ---
+conda() {
+  unset -f conda mamba 2>/dev/null
+  __conda_setup="$('/Users/neiljohari/miniforge3/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
+  if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+  elif [ -f "/Users/neiljohari/miniforge3/etc/profile.d/conda.sh" ]; then
+    . "/Users/neiljohari/miniforge3/etc/profile.d/conda.sh"
+  else
+    export PATH="/Users/neiljohari/miniforge3/bin:$PATH"
+  fi
+  unset __conda_setup
+  [ -f "/Users/neiljohari/miniforge3/etc/profile.d/mamba.sh" ] && . "/Users/neiljohari/miniforge3/etc/profile.d/mamba.sh"
+  "$0" "$@"
 }
+mamba() { conda "$0" "$@"; }
 
+# --- Zoxide + direnv ---
+eval "$(zoxide init zsh)"
+eval "$(direnv hook zsh)"
+
+# --- Live in tmux ---
+_not_inside_tmux() { [[ -z "$TMUX" ]] }
+ensure_tmux_is_running() {
+  if _not_inside_tmux; then
+    tat
+  fi
+}
 ensure_tmux_is_running
 
-# fzf functions
+# --- fzf ---
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if type rg &> /dev/null; then
+  export FZF_DEFAULT_COMMAND='rg --files'
+  export FZF_DEFAULT_OPTS='-m --height 50% --border'
+fi
 
-# homebrew python no longer shadows the system copy of python this 
-# effectively sets the `python` command to the homebrew version
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+# --- Arduino-mk ---
+export ARDUINO_DIR=/Applications/Arduino.app/Contents/Java
+export ARDMK_DIR=/opt/homebrew/opt/arduino-mk
 
-# set up arduino-mk paths
-export ARDUINO_DIR=/Applications/Arduino.app/Contents/Java 
-export ARDMK_DIR=/usr/local/opt/arduino-mk
-
-# shortcut to get back to root of a project
+# --- Aliases ---
 alias grt='cd $(git root)'
 
-# paths for pipx
-export PATH="/Users/neiljohari/.local/bin:$PATH" 
-export PATH="/Users/neiljohari/Library/Python/3.7/bin:$PATH"
-
-# path for postgres bins
+# --- PATH additions (pipx, postgres) ---
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 
-# Add NVM to PATH
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
+# --- zsh-autosuggestions tuning ---
 typeset -g ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE='20'
 
-# Add RVM to PATH; ensure it is last PATH variable change
-export PATH="$PATH:$HOME/.rvm/bin"
+# --- xcenv (lazy if used, remove if not) ---
+if command -v xcenv >/dev/null 2>&1; then
+  eval "$(xcenv init -)"
+fi
