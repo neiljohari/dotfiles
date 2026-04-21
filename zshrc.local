@@ -39,7 +39,16 @@ ensure_tmux_is_running() {
   fi
 }
 ensure_tmux_is_running
-alias notmux='NO_TMUX=1 exec zsh'
+
+# If in tmux, detach (session keeps running in background). If outside (rare
+# since auto-tat fires on shell start), re-exec a shell that skips auto-tat.
+notmux() {
+  if [[ -n "$TMUX" ]]; then
+    tmux detach-client
+  else
+    NO_TMUX=1 exec zsh
+  fi
+}
 
 # --- fzf ---
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
