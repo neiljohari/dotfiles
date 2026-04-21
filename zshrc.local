@@ -31,14 +31,15 @@ mamba() { conda "$0" "$@"; }
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
 
-# --- Live in tmux ---
+# --- Live in tmux (set NO_TMUX=1 to skip for a specific shell) ---
 _not_inside_tmux() { [[ -z "$TMUX" ]] }
 ensure_tmux_is_running() {
-  if _not_inside_tmux; then
+  if _not_inside_tmux && [[ -z "$NO_TMUX" ]]; then
     tat
   fi
 }
 ensure_tmux_is_running
+alias notmux='NO_TMUX=1 exec zsh'
 
 # --- fzf ---
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
