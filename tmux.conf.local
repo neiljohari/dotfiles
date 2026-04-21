@@ -6,10 +6,10 @@ set -ga terminal-overrides ",*256col*:Tc,alacritty:Tc,xterm-ghostty:Tc"
 
 # Performance & UX
 set -s escape-time 10
-# focus-events off: Claude CLI drops its status line when its pane gains focus
-# if events are on. Cost is vim's FocusGained/FocusLost autocmds — fine, since
-# CursorHold handles :checktime well enough.
-set -g focus-events off
+set -g focus-events on
+# Uncomment if Claude CLI in iTerm2 drops its status line on pane focus.
+# Cost is vim's FocusGained/FocusLost autocmds (auto :checktime etc.).
+# set -g focus-events off
 set -g mouse on
 set -g history-limit 100000
 
