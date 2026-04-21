@@ -127,7 +127,7 @@ let g:rails_projections = {
 " vimtex settings
 " see https://castel.dev/post/lecture-notes-1/
 let g:tex_flavor='latex'
-" let g:vimtex_view_method='skim'
+let g:vimtex_view_method='skim'
 let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
@@ -170,7 +170,13 @@ set shortmess+=c
 set signcolumn=yes
 
 " Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+" inoremap <silent><expr> <c-space> coc#refresh()
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)

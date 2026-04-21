@@ -4,6 +4,9 @@
     signingKey = C6CA0540F2ADFA4A7C0A2F4A4087615AB84D394E
 [commit]
     gpgsign = true
+[pull]
+    rebase = false
+    ff = true
 [alias]
     l = log --pretty=colored
     cm = !"git add . && git commit -am" 
