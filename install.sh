@@ -67,6 +67,14 @@ ln -sf "$LOCAL/config/mise/config.toml" "$HOME/.config/mise/config.toml"
 mkdir -p "$HOME/.config/ghostty"
 ln -sf "$LOCAL/config/ghostty/config" "$HOME/.config/ghostty/config"
 
+# ─── 6b. GPG agent config (pinentry-mac + long passphrase cache) ──────────
+# Keeps commit signing non-blocking (native dialog instead of curses pinentry
+# that breaks TUIs). First dialog: check "Save in Keychain" + "Always allow".
+mkdir -p "$HOME/.gnupg"
+chmod 700 "$HOME/.gnupg"
+ln -sf "$LOCAL/gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
+gpgconf --kill gpg-agent 2>/dev/null || true
+
 # ─── 7. Install mise-managed languages ─────────────────────────────────────
 say "Installing mise languages"
 mise install
